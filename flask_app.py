@@ -28,6 +28,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import os
 import yaml
+import cv2
 
 from flask import Flask, render_template, request, make_response, send_from_directory
 
@@ -72,7 +73,11 @@ if __name__ == '__main__':
             img = plt.imread(path)
             # slic_labels = slic(img, 1000, compactness=20.0)
             # slic_labels = slic(img, 1000, slic_zero=True) + 1
-            slic_labels = slic(img, 1500, slic_zero=True) + 1
+            # slic_labels = slic(img, 1500, slic_zero=True) + 1
+            lsc = cv2.ximgproc.createSuperpixelLSC(img, region_size = 8, ratio=0.08)
+            lsc.iterate(20)
+            lsc.enforceLabelConnectivity(10)
+            slic_labels = lsc.getLabels()
 
             print('Converting SLIC labels to vector labels...')
             labels = labelling_tool.ImageLabels.from_label_image(slic_labels)
