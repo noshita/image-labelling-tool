@@ -7,3 +7,5 @@ notebook>=4.2
 widgetsnbextension>=1.2
 pyyaml
 flask
+opencv-python
+opencv-contrib-python

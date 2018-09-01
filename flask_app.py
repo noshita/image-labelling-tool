@@ -42,9 +42,11 @@ if __name__ == '__main__':
     parser.add_argument('--image_dir')
     parser.add_argument('--label_names')
     parser.add_argument('--file_ext', type=str, default='png')
+    parser.add_argument('--port', type=int, default=5000)
     args = parser.parse_args()
 
     file_ext = '.{}'.format(args.file_ext)
+    port = args.port
 
     # `LabelClass` parameters are: symbolic name, human readable name for UI, and RGB colour as list
     with open(args.label_names, 'r') as f:
@@ -177,4 +179,4 @@ if __name__ == '__main__':
 
 
     # app.run(debug=True)
-    app.run(debug=False, host="0.0.0.0")
+    app.run(debug=False, host='0.0.0.0', port=port
