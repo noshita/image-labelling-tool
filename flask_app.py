@@ -177,6 +177,5 @@ if __name__ == '__main__':
     def base_static(filename):
         return send_from_directory(app.root_path + '/ext_static/', filename)
 
-
     # app.run(debug=True)
-    app.run(debug=False, host='0.0.0.0', port=port
+    app.run(debug=False, host='0.0.0.0', port=port)
